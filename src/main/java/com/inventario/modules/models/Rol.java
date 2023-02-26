@@ -32,7 +32,7 @@ public class Rol implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "codigo_rol")
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private int codigoRol;
@@ -45,7 +45,7 @@ public class Rol implements Serializable {
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private Date fechaRegistro;
 
-	@Column(name = "nombre_rol")
+	@Column(name = "nombre_rol", nullable = false, length = 50)
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private String nombreRol;
 

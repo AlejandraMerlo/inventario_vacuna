@@ -34,7 +34,7 @@ public class Empleado implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "codigo_empleado")
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private int codigoEmpleado;

@@ -32,20 +32,24 @@ public class Persona implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "codigo_persona")
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private int codigoPersona;
 
+	@Column(nullable = false, length = 50)
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private String apellidos;
 
+	@Column(nullable = false, length = 10)
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private String cedula;
 
+	@Column(nullable = false, length = 30)
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private String correo;
 
+	@Column(nullable = false, length = 100)
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private String direccion;
 
@@ -54,9 +58,11 @@ public class Persona implements Serializable {
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private Date fechaRegistro;
 
+	@Column(nullable = false, length = 50)
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private String nombres;
 
+	@Column(nullable = false, length = 11)
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private String telefono;
 

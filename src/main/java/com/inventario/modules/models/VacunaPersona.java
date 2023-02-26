@@ -32,11 +32,12 @@ public class VacunaPersona implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "vacuna_persona")
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private int vacunaPersona;
 
+	@Column(nullable = false)
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private int dosis;
 

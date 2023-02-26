@@ -29,7 +29,7 @@ public class UsuarioRol implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "usuario_rol")
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private int usuarioRol;

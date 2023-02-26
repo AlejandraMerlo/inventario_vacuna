@@ -32,7 +32,7 @@ public class TipoVacuna implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "codigo_tipo")
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private int codigoTipo;
@@ -45,7 +45,7 @@ public class TipoVacuna implements Serializable {
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private Date fechaRegistro;
 
-	@Column(name = "nombre_vacuna")
+	@Column(name = "nombre_vacuna", nullable = false, length = 30)
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private String nombreVacuna;
 

@@ -34,7 +34,7 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "codigo_usuario")
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private int codigoUsuario;
@@ -42,9 +42,11 @@ public class Usuario implements Serializable {
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private Boolean estado;
 
+	@Column(nullable = false, length = 50)
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private String password;
 
+	@Column(nullable = false, length = 20)
 	@JsonView({ Views.Read.class, Views.Write.class })
 	private String usuario;
 
