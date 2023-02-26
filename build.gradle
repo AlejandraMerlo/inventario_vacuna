@@ -19,6 +19,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compileOnly 'org.projectlombok:lombok:1.18.8'
 	annotationProcessor 'org.projectlombok:lombok:1.18.8'
+	implementation group: 'commons-validator', name: 'commons-validator', version: '1.5.0'
 }
 
 tasks.named('test') {
