@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -50,6 +52,23 @@ public class PersonaController {
 			return HttpResponseService.responseOK(persona);
 		} catch (Exception exception) {
 			String accion = "Get Persona By código.";
+			log.error(accion, exception);
+			return HttpResponseService
+					.responseInternalError(new ErrorService(exception.getMessage(), accion, exception));
+		}
+	}
+
+	@PutMapping(value = "/update")
+	@JsonView({ Views.Write.class })
+	public ResponseEntity<?> actualizarPersona(@RequestBody Persona persona) {
+		try {
+			if (persona == null)
+				throw new Exception("La persona se encuentra vacía.");
+
+			persona = this.personaService.updatePersona(persona);
+			return HttpResponseService.responseOK(persona);
+		} catch (Exception exception) {
+			String accion = "Update persona y en caso de existir vacunas.";
 			log.error(accion, exception);
 			return HttpResponseService
 					.responseInternalError(new ErrorService(exception.getMessage(), accion, exception));
