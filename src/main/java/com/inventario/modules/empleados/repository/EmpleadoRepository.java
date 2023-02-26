@@ -16,4 +16,8 @@ public interface EmpleadoRepository extends JpaRepository<Empleado, Integer> {
 	@Query(value = "SELECT empleado FROM Empleado empleado WHERE empleado.codigoEmpleado = :codigoEmpleado")
 	public Empleado getEmpleadoByCodigo(@Param("codigoEmpleado") int codigoEmpleado);
 
+	@Query(value = "SELECT empleado FROM Empleado empleado WHERE empleado.persona.vacunado = :vacunado "
+			+ "ORDER BY empleado.persona.apellidos ASC")
+	public List<Empleado> getEmpleadosByVacunacion(@Param("vacunado") Boolean vacunado);
+
 }
