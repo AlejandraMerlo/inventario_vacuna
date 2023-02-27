@@ -57,24 +57,26 @@ public class PersonaService {
 	public void deletePersona(Persona persona) {
 		this.personaRepository.delete(persona);
 	}
-	
+
 	public Persona updatePersona(Persona persona) throws Exception {
 		List<VacunaPersona> vacunasPersona = new ArrayList<>();
 		if (!Funciones.isNumeric(persona.getCedula().trim()) || !this.nombreValido(persona)
-				|| !Funciones.emailValidator(persona.getCorreo().trim())) 
+				|| !Funciones.emailValidator(persona.getCorreo().trim()))
 			throw new Exception("Los datos no se han podido validar.");
-		
-			vacunasPersona = persona.getVacunaPersonas();
-			if (persona.getVacunado()) {
-				vacunasPersona = this.personaVacunaService.insert(vacunasPersona); 
-			} else {
+
+		vacunasPersona = persona.getVacunaPersonas();
+		if (persona.getVacunado()) {
+			vacunasPersona = this.personaVacunaService.insert(vacunasPersona);
+		} else {
+			if (vacunasPersona != null) {
 				if (!vacunasPersona.isEmpty()) {
 					this.personaVacunaService.deleteVacunasPersona(vacunasPersona);
 				}
 			}
-			persona.setVacunaPersonas(vacunasPersona);
-			persona = this.update(persona);
-		
+		}
+		persona.setVacunaPersonas(vacunasPersona);
+		persona = this.update(persona);
+
 		return persona;
 	}
 
